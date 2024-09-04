@@ -1,62 +1,76 @@
-import { createUser, findUserByEmail, findUserByUsername, findUserlogin } from '../model/user';
-// import { generateToken } from '@/services/tokenConfig';
+import { createUser, findUserByEmail, findUserByUsername, findUserByCPF, findUserlogin } from '../model/user';
+import { generateToken } from '@/services/tokenConfig';
 
-// export async function createUserController(_name: string, _email: string, _username: string, _password: string, _confirmPassword: string) {
-//     try {
-//         // Verificações do Controller
-//         if (_password != _confirmPassword) {
-//             return { status: 400, message: 'passwords dont match' };
-//         }
+export async function createUserController(_name: string, _username: string, _email: string, _cpf: string, _password: string, _confirmPassword: string) {
+    console.log("teste 1");
 
-//         if (_email.length == 0) {
-//             return { status: 403, message: 'Email is empty' };
-//         }
+    try {
+        // Verificações do Controller
+        if (_password != _confirmPassword) {
+            return { status: 400, message: 'passwords dont match' };
+        }
 
-//         if (_username.length == 0) {
-//             return { status: 403, message: 'Username is empty' };
-//         }
+        if (_name.length == 0) {
+            return { status: 403, message: 'Name is empty' };
+        }
 
-//         if (_password.length == 0) {
-//             return { status: 403, message: 'Password is empty' };
-//         }
+        if (_username.length == 0) {
+            return { status: 403, message: 'Username is empty' };
+        }
 
-//         if (_confirmPassword.length == 0) {
-//             return { status: 403, message: 'Confirm Password is empty' };
-//         }
+        if (_email.length == 0) {
+            return { status: 403, message: 'Email is empty' };
+        }
 
-//         // Verificar atributos únicos
-//         const userByEmail = await findUserByEmail(_email);
-//         if (userByEmail != undefined) {
-//             return { status: 403, message: 'Email already registered' };
-//         }
+        if (_cpf.length == 0) {
+            return { status: 403, message: 'CPF is empty' };
+        }
 
-//         const userByUsername = await findUserByUsername(_username);
-//         if (userByUsername != undefined) {
-//             return { status: 403, message: 'Username already registered' };
-//         }
+        if (_password.length == 0) {
+            return { status: 403, message: 'Password is empty' };
+        }
 
-//         // Criar a Model
-//         const user = await createUser(_name, _email, _username, _password);
-//         return { status: 201, message: 'User Created', data: user }
+        if (_confirmPassword.length == 0) {
+            return { status: 403, message: 'Confirm Password is empty' };
+        }
 
-//     } catch (err) {
-//         return { status: 500, message: 'Something went wrong' };
-//     }
-// }
+        // Verificar atributos únicos
+        const userByEmail = await findUserByEmail(_email);
+        if (userByEmail != undefined) {
+            return { status: 403, message: 'Email already registered' };
+        }
 
-// export async function login(_email: string, _password: string) {
-//     try {
-//         const userLogin = await findUserlogin(_email, _password);
-//         if (userLogin == undefined) {
-//             return { status: 404, message: 'Incorrect Email or Password' };
-//         } else {
-//             const _token = generateToken(_email);
+        const userByUsername = await findUserByUsername(_username);
+        if (userByUsername != undefined) {
+            return { status: 403, message: 'Username already registered' };
+        }
 
-//             return { status: 200, message: 'Logged In', token: _token };
-//         }
+        const userByCpf = await findUserByCPF(_cpf);
+        if (userByUsername != undefined) {
+            return { status: 403, message: 'CPF already registered' };
+        }
 
-//     } catch (err) {
-//         return { status: 500, message: 'Something went wrong' }
-//     }
-// }
+        // Criar a Model
+        const user = await createUser(_name, _username, _email, _cpf, _password);
+        return { status: 201, message: 'User Created', data: user }
 
+    } catch (err) {
+        return { status: 500, message: 'Something went wrong' };
+    }
+}
+
+export async function login(_username: string, _password: string) {
+    try {
+        const userLogin = await findUserlogin(_username, _password);
+        if (userLogin == undefined) {
+            return { status: 404, message: 'Incorrect Username or Password' };
+        } else {
+            const _token = generateToken(_username);
+
+            return { status: 200, message: 'Logged In', token: _token };
+        }
+
+    } catch (err) {
+        return { status: 500, message: 'Something went wrong' }
+    }
+}
