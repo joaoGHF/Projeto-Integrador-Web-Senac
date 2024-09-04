@@ -3,13 +3,22 @@
  "Fira Sans",
  "Gloria Hallelujah" */
 
- #main {
+#main {
     overflow: hidden;
+}
+
+.container {
+    background-color: rgb(40, 25, 55);
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .topNav {
     display: flex;
-    position: fixed;
+    position: static;
     width: 100vw;
     height: 8vh;
     overflow: hidden;
@@ -32,6 +41,12 @@
 
 .title {
     font-size: 2em;
+    transition: 100ms;
+}
+
+.title:hover {
+    transition: 100ms;
+    font-size: 2.1em;
 }
 
 .brand {
@@ -45,22 +60,92 @@
     border-bottom-right-radius: 10px;
 }
 
-.form {}
+.form {
+    padding: 3vh 2vw;
+    margin-top: 2vh;
+    background-color: rgb(40, 25, 70);
+    color: whitesmoke;
+    border: 2px outset rgb(124, 240, 230);
+    min-width: 480px;
+    max-width: 50vw;
+    border-radius: 5px;
+}
 
-.welcome {}
+.welcome {
+    font-size: 1.4em;
+    font-family: "Gloria Hallelujah", serif;
+    margin-bottom: 1vh;
+    color: rgb(183, 252, 246);
+}
 
-.formTitle {}
+.formTitle {
+    font-size: 1.7em;
+    font-family: "Gloria Hallelujah", serif;
+    text-align: center;
+    color: rgb(183, 252, 246);
+}
 
-.formFields {}
+.divFormFields {
+    padding: 1vh 2vw;
+    margin-bottom: 1vh;
+}
 
-.formLabel {}
+.formLabel {
+    font-family: "Fira Sans", sans-serif;
+    font-size: 1.2em;
+    margin-top: 2vh;
+}
 
-.inputText {}
+.inputText {
+    width: 90%;
+    font-size: 1.1em;
+    border-radius: 4px;
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    color: black;
+}
 
-.inputEmail {}
+.submitBtn {
+    padding: 0.2em 0.3em;
+    background-color: rgb(140, 210, 255);
+    font-size: 1.3em;
+    font-family: "Audiowide";
+    border-radius: 15px;
+    color: black;
+    margin: 2vh 3vw 0;
+    transition: 100ms;
+}
 
-.inputPassword {}
+.submitBtn:hover {
+    transition: 100ms;
+    background-color: rgb(120, 180, 205);
+    padding: 0.2em 0.5em;
+    color: black;
+}
 
-.submitBtn {}
+.submitBtn:active {
+    transition: 100ms;
+    background-color: rgb(150, 120, 255);
+    padding: 0.2em 0.5em;
+    color: black;
+}
 
-.redirectLink {}
+.redirectLink {
+    font-family: "Fira Sans", sans-serif;
+    font-size: 1.1em;
+    color: whitesmoke;
+    transition: 100ms;
+}
+
+.redirectLink:hover {
+    color: whitesmoke;
+    text-decoration: underline solid rgb(183, 252, 246) 1px;
+    transition: 100ms;
+}
+
+.redirectLink:active {
+    color: rgb(183, 252, 246);
+    text-decoration: none;
+    transition: 100ms;
+}
