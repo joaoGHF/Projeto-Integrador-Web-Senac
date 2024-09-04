@@ -2,3 +2,44 @@
 /* "Audiowide",
  "Fira Sans",
  "Gloria Hallelujah" */
+
+ #main {
+    overflow: hidden;
+}
+
+.topNav {
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 8vh;
+    overflow: hidden;
+    justify-content: space-around;
+    padding: 0 3vw;
+    background-color: rgb(0, 10, 15);
+}
+
+.logoImg {}
+
+.title {}
+
+.form {}
+
+.welcome {}
+
+.brand {}
+
+.formTitle {}
+
+.formFields {}
+
+.formLabel {}
+
+.inputText {}
+
+.inputEmail {}
+
+.inputPassword {}
+
+.submitBtn {}
+
+.redirectLink {}

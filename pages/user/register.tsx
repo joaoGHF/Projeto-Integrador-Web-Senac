@@ -2,53 +2,54 @@ import Image from "next/image";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import styles from "@/styles/register.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Register() {
   return (
-    <main className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`} >
+    <main id={styles.main} className={`flex min-h-screen flex-col`} >
       <Head>
         <title>FindMyGame | Cadastro</title>
         <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
       </Head>
 
       <div>
-        <nav>
-        <h1>FindMyGame</h1>
+        <nav className={styles.topNav}>
+          <Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg}/>
 
-        <Image src="/logo.png" alt="Logo" width="100" height="100" />
+          <h1 className={styles.title}>FindMyGame</h1>
 
         </nav>
 
-        <form>
-          <h2>Bem-vindo ao <span>FindMyGame</span></h2>
+        <form className={styles.form}>
+          <h2 className={styles.welcome}>Bem-vindo ao <span className={styles.brand}>FindMyGame</span></h2>
 
-          <h2>Registrar-se</h2>
+          <h2 className={styles.formTitle}>Registrar-se</h2>
 
-          <div>
-            <p>Nome</p>
-            <input type="text" placeholder="Nome" /><br />
+          <div className={styles.formFields}>
+            <p className={styles.formLabel}>Nome</p>
+            <input type="text" placeholder="Nome" className={styles.inputText} /><br />
 
-            <p>Nome de Usuário</p>
-            <input type="text" placeholder="Nome de Usuário" /><br />
+            <p className={styles.formLabel}>Nome de Usuário</p>
+            <input type="text" placeholder="Nome de Usuário" className={styles.inputText}/><br />
 
-            <p>Email</p>
-            <input type="email" placeholder="Nome" /><br />
+            <p className={styles.formLabel}>Email</p>
+            <input type="email" placeholder="Nome" className={styles.inputEmail}/><br />
 
-            <p>CPF</p>
-            <input type="text" placeholder="CPF" /><br />
+            <p className={styles.formLabel}>CPF</p>
+            <input type="text" placeholder="CPF" className={styles.inputText}/><br />
 
-            <p>Senha</p>
-            <input type="password" placeholder="Senha" /><br />
+            <p className={styles.formLabel}>Senha</p>
+            <input type="password" placeholder="Senha" className={styles.inputPassword} /><br />
 
-            <p>Confirmação da senha</p>
-            <input type="password" placeholder="Confirmação da senha" /><br />
+            <p className={styles.formLabel}>Confirmação da senha</p>
+            <input type="password" placeholder="Confirmação da senha" className={styles.inputPassword}/><br />
 
-            <button type="submit">Cadastrar</button>
+            <button type="submit" className={styles.submitBtn}>Cadastrar</button>
           </div>
 
-          <Link href={`/user/login`}>Já tenho uma conta</Link>
+          <Link href={`/user/login`} className={styles.redirectLink}>Já tenho uma conta</Link>
         </form>
       </div>
     </main>
