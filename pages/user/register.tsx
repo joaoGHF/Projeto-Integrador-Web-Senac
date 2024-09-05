@@ -60,9 +60,9 @@ export default function Register() {
 
       <div className={styles.container}>
         <nav className={styles.topNav}>
-          <Link href={`/user/register`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} /></Link>
+          <Link href={`/`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} /></Link>
 
-          <Link href={`/user/register`}><h1 className={styles.title}><span className={styles.brand} >FindMyGame</span></h1></Link>
+          <Link href={`/`}><h1 className={styles.title}><span className={styles.brand} >FindMyGame</span></h1></Link>
 
         </nav>
 

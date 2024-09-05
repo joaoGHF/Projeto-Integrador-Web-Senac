@@ -61,9 +61,9 @@ export default function Login() {
 
       <div className={styles.container}>
         <nav className={styles.topNav}>
-          <Link href={`/user/login`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} /></Link>
+          <Link href={`/`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} /></Link>
 
-          <Link href={`/user/login`}><h1 className={styles.title}><span className={styles.brand} >FindMyGame</span></h1></Link>
+          <Link href={`/`}><h1 className={styles.title}><span className={styles.brand} >FindMyGame</span></h1></Link>
         </nav>
 
         <form className={styles.form} onSubmit={formSubmit}>
