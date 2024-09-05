@@ -16,7 +16,7 @@ datasource db {
 model user {
   id Int @id @unique @default(autoincrement())
 
-  name     String?
+  name     String
   username String  @unique
   email    String  @unique
   cpf    String  @unique
@@ -24,15 +24,17 @@ model user {
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  ratings rating[]
 }
 
 model game {
   id Int @id @unique @default(autoincrement())
 
-  name String? @unique
+  name String @unique
   releasedate DateTime
   systemRequirements String
-  descrition String 
+  description String 
   accessLink String
   platform String
   developer String
@@ -41,28 +43,24 @@ model game {
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  ratings rating[]
+  genres genre[]
 }
 
 model rating {
   id Int @id @unique @default(autoincrement())
 
-  username String @unique
-  value Float
-  description String
+  value Int
+  comment String
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-}
 
-model coment {
-  id Int @id @unique @default(autoincrement())
-
-  username String @unique
-  content String
-  comentDate DateTime
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  userId Int
+  user user @relation(fields: [userId] , references: [id])
+  gameId Int
+  game game @relation(fields: [gameId] , references: [id])
 }
 
 model genre {
@@ -72,4 +70,7 @@ model genre {
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  gameId Int
+  game game @relation(fields: [gameId] , references: [id])
 }
