@@ -46,7 +46,7 @@ export async function createUserController(_name: string, _username: string, _em
         }
 
         const userByCpf = await findUserByCPF(_cpf);
-        if (userByUsername != undefined) {
+        if (userByCpf != undefined) {
             return { status: 403, message: 'CPF already registered' };
         }
 

@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import Link from "next/link";
-
-const inter = Inter({ subsets: ["latin"] });
+import styles from "@/styles/login.module.css";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { getCookie } from "cookies-next";
+import { checkToken } from "@/services/tokenConfig";
 
 export default function Login() {
   return (
@@ -13,11 +15,11 @@ export default function Login() {
         <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
       </Head>
 
-      <div>
+      <div className={styles.container}>
         <nav>
-        <h1>FindMyGame</h1>
+          <h1>FindMyGame</h1>
 
-        <Image src="/logo.png" alt="Logo" width="100" height="100" />
+          <Image src="/logo.png" alt="Logo" width="100" height="100" />
 
         </nav>
 
