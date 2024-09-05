@@ -14,11 +14,11 @@ export default function Register() {
         <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
       </Head>
 
-      <div>
+      <div className={styles.container}>
         <nav className={styles.topNav}>
-          <Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg}/>
+          <Link href={`/user/register`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} /></Link>
 
-          <h1 className={styles.title}>FindMyGame</h1>
+          <Link href={`/user/register`}><h1 className={styles.title}><span className={styles.brand} >FindMyGame</span></h1></Link>
 
         </nav>
 
@@ -27,24 +27,24 @@ export default function Register() {
 
           <h2 className={styles.formTitle}>Registrar-se</h2>
 
-          <div className={styles.formFields}>
+          <div className={styles.divFormFields}>
             <p className={styles.formLabel}>Nome</p>
             <input type="text" placeholder="Nome" className={styles.inputText} /><br />
 
             <p className={styles.formLabel}>Nome de Usuário</p>
-            <input type="text" placeholder="Nome de Usuário" className={styles.inputText}/><br />
+            <input type="text" placeholder="Nome de Usuário" className={styles.inputText} /><br />
 
             <p className={styles.formLabel}>Email</p>
-            <input type="email" placeholder="Nome" className={styles.inputEmail}/><br />
+            <input type="email" placeholder="Nome" className={styles.inputText} /><br />
 
             <p className={styles.formLabel}>CPF</p>
-            <input type="text" placeholder="CPF" className={styles.inputText}/><br />
+            <input type="text" placeholder="CPF" className={styles.inputText} /><br />
 
             <p className={styles.formLabel}>Senha</p>
-            <input type="password" placeholder="Senha" className={styles.inputPassword} /><br />
+            <input type="password" placeholder="Senha" className={styles.inputText} /><br />
 
             <p className={styles.formLabel}>Confirmação da senha</p>
-            <input type="password" placeholder="Confirmação da senha" className={styles.inputPassword}/><br />
+            <input type="password" placeholder="Confirmação da senha" className={styles.inputText} /><br />
 
             <button type="submit" className={styles.submitBtn}>Cadastrar</button>
           </div>
