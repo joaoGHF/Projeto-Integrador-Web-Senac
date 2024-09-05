@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap'); /* "Monoton" */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap'); /* "Audiowide" */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); /* "Fira Sans" */
+
+#main {
+    overflow: hidden;
+}
+
+.topNav {
+    display: flex;
+    position: static;
+    width: 100vw;
+    height: 8vh;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3vw;
+    background-color: rgb(0, 10, 15);
+}
+
+.logoImage {
+    height: 7vh;
+    border-radius: 15px;
+    transition: 200ms;
+    opacity: 1;
+
+}
+
+.logoImage:hover {
+    opacity: 0.7;
+    transition: 200ms;
+}
+
+.searchContainer {
+    width: 58vw;
+    height: 4vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 15x;
+}
+
+.searchBar {
+    width: 90%;
+    font-size: 1.1em;
+    border-radius: 10px;
+    padding-left: 0.5em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+}
+
+.send {
+    background-color: rgb(150, 190, 255);
+    padding: 2px 7px;
+    border-radius: 7px;
+    font-family: "Audiowide", sans-serif;
+    transition: 200ms;
+}
+
+.send:hover {
+    transition: 200ms;
+    background-color: rgb(173, 205, 255);
+}
+
+.send:active {
+    background-color: rgb(110, 149, 211);
+}
+
+.createMovie {
+    background-color: rgb(10, 98, 235);
+    padding: 4px 7px;
+    border-radius: 7px;
+    font-family: "Audiowide", sans-serif;
+    color: rgb(230, 240, 255);
+}
+
+.createMovie:hover {
+    transition: 200ms;
+    background-color: rgb(70, 80, 205);
+}
+
+.createMovie:active {
+    transition: 200ms;
+    background-color: rgb(50, 30, 195);
+}
+
+.logoutBtn {
+    background-color: rgb(100, 0, 75);
+    padding: 4px 7px;
+    border-radius: 7px;
+    font-family: "Audiowide", sans-serif;
+    color: rgb(230, 240, 255);
+}
+
+.logoutBtn:hover {
+    transition: 200ms;
+    background-color: rgb(100, 60, 75);
+}
+
+.logoutBtn:active {
+    transition: 200ms;
+    background-color: rgb(170, 0, 30);
+}
+
+.mainContainer {
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(100, 100, 150);
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.leftContainer {
+    width: auto;
+    height: auto;
+    background-color: rgb(70, 80, 140);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-right: 1vw;
+    margin-top: 2vh;
+}
+
+.rightContainer {
+    width: auto;
+    height: auto;
+    background-color: rgb(30, 30, 100);
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    margin: 3vh 1vw 0 1vw;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.card {
+    font-family: "Fira Sans", sans-serif;
+    width: 30vw;
+    height: 40vh;
+    text-align: center;
+    background-color: rgb(10, 20, 40);
+    color: whitesmoke;
+    padding: 15px;
+    margin: 8px 3px 25px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    box-shadow: 0px 0px 8px 3px white;
+
+    cursor: pointer;
+}
+
+.card img {
+    margin: auto 0;
+}
+
+.cardInfos {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+
+    padding: 25px 5px 5px 20px;
+
+    overflow-y: auto;
+}
+
+.cardInfos p {
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+.movieTitle {
+    font-size: 1.5em;
+}
