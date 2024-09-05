@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken';
 
 const SECRET = process.env.NEXT_PUBLIC_JWT_SECRET;
 
-export function generateToken(_email) {
-    return jwt.sign( {email: _email}, SECRET );
+export function generateToken(_username) {
+    return jwt.sign( {username: _username}, SECRET );
 }
 
 function readToken(token) {
@@ -17,5 +17,3 @@ function readToken(token) {
 export function checkToken(token) {
     return readToken(token);
 }
-
-// TODO: Conferir este arquivo futuramente (posso ter cometido algum erro)
