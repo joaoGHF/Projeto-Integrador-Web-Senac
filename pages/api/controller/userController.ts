@@ -71,6 +71,6 @@ export async function login(_username: string, _password: string) {
         }
 
     } catch (err) {
-        return { status: 500, message: 'Something went wrong' }
+        return { status: 500, message: 'Something went wrong' };
     }
 }
