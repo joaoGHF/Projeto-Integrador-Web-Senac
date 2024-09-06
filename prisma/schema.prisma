@@ -32,7 +32,7 @@ model game {
   id Int @id @unique @default(autoincrement())
 
   name String @unique
-  releasedate DateTime
+  releaseDate String
   systemRequirements String
   description String 
   accessLink String
@@ -40,6 +40,8 @@ model game {
   developer String
   distributor String
   price Float
+  imageURL String
+  videoURL String
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
