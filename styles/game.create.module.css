@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gloria+Hallelujah&display=swap');
+/* "Audiowide",
+ "Fira Sans",
+ "Gloria Hallelujah" */
+
+#mainCointainer {
+    background-color: rgb(20, 30, 70);
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.topNav {
+    display: flex;
+    position: static;
+    width: 100vw;
+    height: 8vh;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3vw;
+    background-color: rgb(0, 10, 15);
+    top: 0;
+}
+
+.logoImg {
+    width: 100px;
+    transition: 100ms;
+}
+
+.logoutBtn {
+    background-color: rgb(100, 0, 75);
+    padding: 4px 7px;
+    border-radius: 7px;
+    font-family: "Audiowide", sans-serif;
+    color: rgb(230, 240, 255);
+}
+
+.logoutBtn:hover {
+    transition: 200ms;
+    background-color: rgb(100, 60, 75);
+}
+
+.logoutBtn:active {
+    transition: 200ms;
+    background-color: rgb(170, 0, 30);
+}
+
+.logoImg:hover {
+    transition: 100ms;
+    width: 110px;
+    height: auto;
+}
+
+.title {
+    font-size: 2em;
+    transition: 100ms;
+}
+
+.title:hover {
+    transition: 100ms;
+    font-size: 2.1em;
+}
+
+.brand {
+    color: rgb(124, 240, 230);
+    padding-left: 0.5em;
+    font-family: "Audiowide";
+    border-bottom: 1px solid rgb(100, 200, 230);
+    border-left: 1px solid rgb(100, 200, 230);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 10px;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    background-color: rgb(20, 30, 70);
+    height: 100vh;
+    width: 100vw;
+    overflow-y: hidden;
+}
+
+.leftContainer {
+    background-color: rgb(50, 10, 60);
+    display: inline-block;
+    padding-top: 5vh;
+}
+
+.formContainer {
+    background-color: rgb(0, 10, 35);
+    width: 55vw;
+    border-radius: 7px;
+    border: 2px groove rgb(0, 30, 70);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 5vw;
+    align-items: center;
+    color: white;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.formHeading {
+    margin: 1em 0;
+    font-size: 2.1em;
+    font-family: "Gloria Hallelujah", serif;
+    margin-bottom: 1vh;
+    color: rgb(183, 252, 246);}
+
+
+.inputLabel {
+    font-family: "Fira Sans", sans-serif;
+    font-size: 1.2em;
+    margin-top: 2vh;
+}
+
+.input {
+    width: 90%;
+    font-size: 1.1em;
+    min-height: 2.5em;
+    border-radius: 4px;
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    color: black;
+    margin-bottom: 1vh;
+}
+
+.inputDate {
+    width: 70%;
+    font-size: 1.1em;
+    border-radius: 4px;
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    color: black;
+    margin-bottom: 1vh;
+    min-height: 2.5em;
+}
+
+.inputTextDiv {
+    height: 4em;
+    width: fit-content;
+    margin-bottom: 1vh;
+}
+
+.inputText {
+    width: 24vw;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 1em;
+    border-radius: 4px;
+    color: black;
+    font-size: 1.1em;
+    height: 100%;
+    resize: none;
+}
+
+.submitBtn {
+    padding: 0.2em 0.3em;
+    background-color: rgb(140, 210, 255);
+    font-size: 1.3em;
+    font-family: "Audiowide";
+    border-radius: 15px;
+    color: black;
+    margin: 2vh 3vw 0;
+    transition: 100ms;
+}
+
+.submitBtn:hover {
+    transition: 100ms;
+    background-color: rgb(120, 180, 205);
+    padding: 0.2em 0.5em;
+    color: black;
+}
+
+.submitBtn:active {
+    transition: 100ms;
+    background-color: rgb(150, 120, 255);
+    padding: 0.2em 0.5em;
+    color: black;
+}
+
+.gameAnimation {
+    background-image: url('../public/game-animation.gif');
+    background-size: 70%;
+    background-position: center;
+    background-repeat: repeat;
+}
