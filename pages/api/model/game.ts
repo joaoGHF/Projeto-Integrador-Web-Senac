@@ -1,10 +1,7 @@
 import { prisma } from "@/db";
 
 export async function createGame(_name:string, _releaseDate:string, _systemRequirements:string, _description:string, _accessLink:string, _platform:string, _developer:string, _distributor:string, _price:number, _imageURL:string, _videoURL:string) {
-    console.log("Dentro da model");
-    console.log(_releaseDate);
-    
-    
+
     const game = await prisma.game.create({
         data: {
             name: _name,
