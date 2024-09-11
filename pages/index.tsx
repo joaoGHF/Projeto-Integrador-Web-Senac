@@ -7,10 +7,34 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-
+// TODO: Colocar os gêneros no filme!
 export default function Home() {
 
   const router = useRouter();
+  const [data, setData]: any = useState(undefined);
+
+  async function fetchData() {
+    try {
+      const response = await fetch(`/api/action/game/select`, {
+        method: 'GET'
+      });
+
+      const responseJson = await response.json();
+
+      setData(responseJson.data);
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  function movieClick(movieName: string) {
+    router.push(`/movie/` + movieName);
+  }
 
   function logout() {
     deleteCookie('authorization');
@@ -25,7 +49,7 @@ export default function Home() {
 
       {/* Barra superior de navegação */}
       <nav className={styles.topNav}>
-      <Link href={`/`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} /></Link>
+        <Link href={`/`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} /></Link>
 
         <div className={styles.searchContainer}>
           <input type="text" className={styles.searchBar} />
@@ -49,23 +73,32 @@ export default function Home() {
         {/* Painel direito */}
         <div className={styles.rightContainer}>
 
+          {data != undefined && data instanceof Array ?
+            data.map(game => (
               <div className={styles.card}>
-                <img src='' alt="Game Banner" />
+                <img src={game.imageURL} alt="Game Banner" />
                 <div className={styles.cardInfos}>
-                  <h2 className={styles.movieTitle}></h2>
-                  <p></p>
-                  <p>Gêneros do Jogo</p>
-                  <p></p>
+                  <h2 className={styles.movieTitle}>{game.name}</h2>
+                  <p>Data de Lançamento: {game.releaseDate}</p>
+                  <p>Requerimentos do Sistema: {game.systemRequirements} </p>
+                  <p>Disponível em: {game.accessLink}</p>
+                  <p>Preço: {game.price}</p>
+                  <p>Descrição: {game.description}</p>
+                  <p>Plataformas: {game.platform}</p>
+                  <p>Desenvolvedora(s): {game.developer}</p>
+                  <p>Destribuidora(s): {game.distributor}</p>
                 </div>
               </div>
-        
+            ))
+
+            :
+
+            <p>No game found</p>
+          }
+
 
         </div>
-
       </div>
-
-
-
     </main>
   );
 }

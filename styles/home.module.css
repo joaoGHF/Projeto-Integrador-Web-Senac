@@ -105,9 +105,9 @@
 .mainContainer {
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(100, 100, 150);
+    background-color: rgb(10, 20, 40);
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 20% 75%;
 }
 
 .leftContainer {
