@@ -25,6 +25,13 @@ export async function findGameByName(_name:string) {
     const game = await prisma.game.findUnique({
         where: {
             name: _name
+        },
+        include: {
+            ratings: {
+                include: {
+                    user: true
+                }
+            }
         }
     });
 
