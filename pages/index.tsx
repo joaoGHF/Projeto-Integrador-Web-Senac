@@ -13,6 +13,33 @@ export default function Home() {
   const router = useRouter();
   const [data, setData]: any = useState(undefined);
 
+  // Constante para salvar todos os jogos
+  const [saveData, setSaveData]: Array<any> = useState(undefined);
+
+  // Constante para salvar o texto da barra de pesquisa
+  const [name, setName] = useState('');
+
+  function searchFilter(array: any, text: string) {
+    if (text == '') {
+      return array;
+    } else {
+      return array.filter((singleGame: any) => singleGame.name.toLowerCase().includes(text.toLowerCase()));
+    }
+  }
+
+  function formSubmit(event:any) {
+    event.preventDefault();
+
+    try {
+
+      const filteredGames = searchFilter(saveData, name);
+      setData(filteredGames);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
   async function fetchData() {
     try {
       const response = await fetch(`/api/action/game/select`, {
@@ -22,6 +49,7 @@ export default function Home() {
       const responseJson = await response.json();
 
       setData(responseJson.data);
+      setSaveData(responseJson.data);
     }
     catch (err) {
       console.log(err);
@@ -32,8 +60,13 @@ export default function Home() {
     fetchData();
   }, []);
 
-  function movieClick(movieName: string) {
-    router.push(`/movie/` + movieName);
+  function gameClick(gameName: string) {
+    router.push(`/game/` + gameName);
+  }
+
+  function iconClick() {
+    router.push(`./`);
+    router.reload();
   }
 
   function logout() {
@@ -49,17 +82,15 @@ export default function Home() {
 
       {/* Barra superior de navegação */}
       <nav className={styles.topNav}>
-        <Link href={`/`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} /></Link>
+        <Link href={`/`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} onClick={iconClick}/></Link>
 
-        <div className={styles.searchContainer}>
-          <input type="text" className={styles.searchBar} />
+        <form className={styles.searchContainer} onSubmit={formSubmit}>
+          <input type="text" className={styles.searchBar} onChange={(e) => { setName(e.target.value) }}/>
           <button className={styles.send}>Enviar</button>
-        </div>
+        </form>
 
         <Link href={`/game/create`} className={styles.createMovie}>Criar Jogo</Link>
-
         <button className={styles.logoutBtn} onClick={logout}>Logout</button>
-
       </nav>
 
       {/* Container principal, ele vai conter o GRID */}
@@ -77,16 +108,17 @@ export default function Home() {
             data.map(game => (
               <div className={styles.card}>
                 <img src={game.imageURL} alt="Game Banner" />
-                <div className={styles.cardInfos}>
+
+                <div className={styles.cardInfos} onClick={() => { gameClick(game.name) }}>
                   <h2 className={styles.movieTitle}>{game.name}</h2>
                   <p>Data de Lançamento: {game.releaseDate}</p>
                   <p>Requerimentos do Sistema: {game.systemRequirements} </p>
-                  <p>Disponível em: {game.accessLink}</p>
-                  <p>Preço: {game.price}</p>
+                  <p className={styles.movieDataLink}>Disponível em: {game.accessLink}</p>
+                  <p>Preço: R${game.price}</p>
                   <p>Descrição: {game.description}</p>
                   <p>Plataformas: {game.platform}</p>
                   <p>Desenvolvedora(s): {game.developer}</p>
-                  <p>Destribuidora(s): {game.distributor}</p>
+                  <p>Distribuidora(s): {game.distributor}</p>
                 </div>
               </div>
             ))
@@ -102,8 +134,6 @@ export default function Home() {
     </main>
   );
 }
-
-
 
 export function getServerSideProps({ req, res }: any) {
   try {
