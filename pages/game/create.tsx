@@ -107,7 +107,7 @@ export default function createGame() {
 
                         <p className={styles.inputLabel} >Requerimentos do Sistema</p>
                         <div className={styles.inputTextDiv}>
-                            <textarea className={styles.inputText} placeholder="Descrição" onChange={(event) => { handleFormEdit(event, 'systemRequirements') }} /><br />
+                            <textarea className={styles.inputText} placeholder="Requerimentos do Sistema" onChange={(event) => { handleFormEdit(event, 'systemRequirements') }} /><br />
                         </div>
 
                         <p className={styles.inputLabel}>Link de Acesso do Jogo</p>

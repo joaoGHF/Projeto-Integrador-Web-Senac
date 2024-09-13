@@ -142,13 +142,19 @@
 }
 
 .inputTextDiv {
-    height: 4em;
+    min-height: 15vh;
+    height: fit-content;
     width: fit-content;
     margin-bottom: 1vh;
+    display: inline-block;
+    width: 80%;
 }
 
 .inputText {
-    width: 24vw;
+    width: 100%;
+    min-height: 8vh;
+    height: 15vh;
+    display: inline-block;
     padding-top: 7px;
     padding-bottom: 7px;
     padding-left: 1em;
