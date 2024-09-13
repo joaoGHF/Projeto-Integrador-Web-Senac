@@ -7,7 +7,7 @@ export async function createRatingController(_value: number, _username: string, 
         const userByUsername = await findUserByUsername(_username);
         const gameByName = await findGameByName(_gameName);
 
-        if (userByUsername == undefined) {
+        if (userByUsername?.username == undefined) {
             return { status: 404, message: 'User not found' };
         }
 
