@@ -74,6 +74,13 @@ export default function Home() {
     router.push(`/user/login`);
   }
 
+  function dateFormat(_date: string) {
+    const [date, time] = _date.split("T");
+    const [year, month, day] = date.split("-");
+
+    return `${day}/${month}/${year}`;
+}
+
   return (
     <main id={styles.main} className={`flex min-h-screen flex-col`} >
       <Head>
@@ -111,7 +118,7 @@ export default function Home() {
 
                 <div className={styles.cardInfos} onClick={() => { gameClick(game.name) }}>
                   <h2 className={styles.movieTitle}>{game.name}</h2>
-                  <p>Data de Lançamento: {game.releaseDate}</p>
+                  <p>Data de Lançamento: {dateFormat(game.releaseDate)}</p>
                   <p>Requerimentos do Sistema: {game.systemRequirements} </p>
                   <p className={styles.movieDataLink}>Disponível em: {game.accessLink}</p>
                   <p>Preço: R${game.price}</p>
