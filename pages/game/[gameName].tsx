@@ -27,6 +27,7 @@ export default function game({ gameName }: any) {
 
     async function formSubmit(e: any) {
         e.preventDefault();
+
         try {
             const cookieAuth = getCookie('authorization');
             const tokenInfos = checkToken(cookieAuth);
@@ -37,7 +38,7 @@ export default function game({ gameName }: any) {
                 body: JSON.stringify({
                     value: Number(ratingForm.value),
                     comment: ratingForm.comment,
-                    email: tokenInfos.username,
+                    userName: tokenInfos.username,
                     gameName: gameName
                 })
             });
@@ -76,6 +77,38 @@ export default function game({ gameName }: any) {
         router.push(`/user/login`);
     }
 
+    function dateFormat(_date: string) {
+        const [date, time] = _date.split("T");
+        const [year, month, day] = date.split("-");
+
+        return `${day}/${month}/${year}`;
+    }
+
+    async function deleteComment(event: any) {
+        event.preventDefault();
+        try {
+            const cookieAuth = getCookie('authorization');
+            const tokenInfos = checkToken(cookieAuth);
+
+            const response = await fetch('/api/action/rating/delete', {
+                method: 'DELETE',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({
+                    userName: tokenInfos.username,
+                    gameName: gameName
+                })
+            });
+
+            const responseJson = await response.json();
+            alert(responseJson.message);
+            router.reload();
+
+        } catch (err) {
+            console.log(err);
+
+        }
+    }
+
     return (
         <main id={styles.main} className="flex min-h-screen flex-col">
             <Head>
@@ -106,9 +139,9 @@ export default function game({ gameName }: any) {
 
                             <div className={styles.gameInfos}>
                                 <h2 className={styles.gameName}>{data.name}</h2>
-                                <p className={styles.gameItem}>Data de Lançamento: {data.releaseDate}</p>
+                                <p className={styles.gameItem}>Data de Lançamento: {dateFormat(data.releaseDate)}</p>
                                 <p className={styles.gameItem}>Requerimentos do Sistema: {data.systemRequirements} </p>
-                                <p className={styles.gameURL}>Disponível em: {data.accessLink}</p>
+                                <p className={styles.gameURL}>Disponível em: <Link href={data.accessLink} target="_blank" className={styles.gameUrlLink}>{data.accessLink}</Link></p>
                                 <p className={styles.gameItem}>Preço: R${data.price}</p>
                                 <p className={styles.gameItem}>Descrição: {data.description}</p>
                                 <p className={styles.gameItem}>Plataformas: {data.platform}</p>
@@ -125,11 +158,25 @@ export default function game({ gameName }: any) {
                             <div className={styles.topDivformRating}>
 
                                 <div className={styles.topDivformRatingNote}>
-                                    <p className={styles.label}>Digite uma nota (0 a 5)</p>
-                                    <input className={styles.value} type="number" max={5} min={0} onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                    <div className={styles.starRating}>
+                                        <input className={styles.radioHide} type="radio" id="star_5" name="stars" value="5" onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                        <label className={styles.radioStar} htmlFor="star_5"></label>
+
+                                        <input className={styles.radioHide} type="radio" id="star_4" name="stars" value="4" onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                        <label className={styles.radioStar} htmlFor="star_4"></label>
+
+                                        <input className={styles.radioHide} type="radio" id="star_3" name="stars" value="3" onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                        <label className={styles.radioStar} htmlFor="star_3"></label>
+
+                                        <input className={styles.radioHide} type="radio" id="star_2" name="stars" value="2" onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                        <label className={styles.radioStar} htmlFor="star_2"></label>
+
+                                        <input className={styles.radioHide} type="radio" id="star_1" name="stars" value="1" onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                        <label className={styles.radioStar} htmlFor="star_1"></label>
+                                    </div>
                                 </div>
 
-                                <button className={styles.deleteComment}>Deletar minha Avaliação</button>
+                                <button className={styles.deleteComment} onClick={deleteComment}>Deletar minha Avaliação</button>
                             </div>
 
                             <textarea className={styles.comment} placeholder="Digite o seu comentário" rows={8}

@@ -145,6 +145,24 @@
     word-break: break-all;
 }
 
+.gameUrlLink {
+    color: 1px double rgb(180, 200, 205);
+    border-bottom: 1px outset rgb(130, 118, 205) !important;
+    transition: 200ms;
+}
+
+.gameUrlLink:hover {
+    color: rgb(190, 200, 195);
+    border-bottom: 1px outset rgb(130, 118, 205) !important;
+    transition: 200ms;
+}
+
+.gameUrlLink:active {
+    color: rgb(200, 200, 255);
+    border-bottom: 1px outset rgb(130, 118, 205) !important;
+    transition: 200ms;
+}
+
 .gameVideo {
     margin: 0 auto;
     margin-bottom: 5vh;
@@ -218,6 +236,7 @@
 .label {
     font-family: "Fira Sans", sans-serif;
     font-size: 1em;
+    margin: 3vh 0 2vh;
 }
 
 .value {
@@ -227,6 +246,42 @@
     padding-left: 1em;
     margin-bottom: 3vh;
 }
+
+/* Radio Star */
+
+.starRating {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.radioHide {
+    /* display: none; */
+    opacity: 0;
+    position: fixed;
+}
+
+.radioStar {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.452);
+    transition: 200ms;
+}
+
+.radioStar::before {
+    content: "\2605";
+    display: inline-block;
+    font-size: 2em;
+}
+
+.radioStar:hover,
+.radioStar:hover~.radioStar {
+    color: goldenrod;
+    transition: 200ms;
+}
+
+.radioHide:checked~.radioStar {
+    color: gold;
+}
+
 
 .comment {
     width: 60vw;
@@ -263,14 +318,20 @@
 
 .ratings {
     background-color: rgb(12, 12, 35);
+    min-width: 40vw;
     width: fit-content;
     max-width: 80vw;
     margin: 4vh auto 0;
-    padding: 2vh 1vw 2vh 2vw;
+    padding: 5vh 1vw 2vh 2vw;
     display: flex;
     justify-content: center;
     flex-direction: column;
     border: 1px groove rgb(40, 0, 100);
+    border-radius: 8px;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .ratingTitle {
