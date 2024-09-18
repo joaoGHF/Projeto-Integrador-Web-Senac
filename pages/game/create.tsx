@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "@/styles/game.create.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { deleteCookie, getCookie } from "cookies-next";
@@ -8,8 +8,44 @@ import { checkToken } from "@/services/tokenConfig";
 import { useRouter } from "next/router";
 
 export default function createGame() {
+    // Armazena os gêneros de filmess do banco de dados
+    const [genres, setGenres]: any = useState(undefined);
+
+    //Armazena os genros selecionados
+    var selectedGenres: Array<Number> = [];
 
     const router = useRouter();
+
+    function handleCheckBoxEdit(event: any, id: number) {
+        if (event.target.checked) {
+            selectedGenres.push(Number(id));
+        } else {
+            const index = selectedGenres.indexOf(Number(id));
+
+            if (index != undefined) {
+                selectedGenres.splice(index, 1)
+            }
+        }
+    }
+
+    async function fetchData() {
+        try {
+            const responses = await fetch(`/api/action/genre/select`, {
+                method: 'GET'
+            });
+
+            const responseJson = await responses.json();
+
+            setGenres(responseJson.data);
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     function logout() {
         deleteCookie('authorization');
@@ -35,9 +71,6 @@ export default function createGame() {
             ...formData,
             [field]: event.target.value
         });
-
-
-        console.log(formData);
     }
 
     async function formSubmit(event: any) {
@@ -135,6 +168,26 @@ export default function createGame() {
                         <div className={styles.inputTextDiv}>
                             <textarea className={styles.inputText} placeholder="Descrição" onChange={(event) => { handleFormEdit(event, 'description') }} /><br />
                         </div>
+
+
+                        <h3 className={styles.genresHeading}>Gêneros do Filme</h3>
+                        <div className={styles.genresDiv}>
+                            {
+                                genres != undefined && genres instanceof Array ?
+
+                                    genres.map(genre => (
+                                        <div className={styles.genreBox}>
+                                            <input type="checkbox" onChange={(e) => handleCheckBoxEdit(e, genre.id)} />
+                                            <label>{genre.name}</label>
+                                        </div>
+                                    ))
+                                    :
+
+                                    <p> No genres</p>
+                            }
+                        </div>
+
+
                         <input className={styles.submitBtn} type="submit" value="Enviar" /><br /><br />
                     </form>
                 </div>
