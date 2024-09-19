@@ -73,6 +73,5 @@ model genre {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  gameId Int
-  game game @relation(fields: [gameId] , references: [id])
+  games game[] 
 }

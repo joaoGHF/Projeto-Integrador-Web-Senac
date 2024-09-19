@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "@/styles/game.create.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { deleteCookie, getCookie } from "cookies-next";
@@ -8,8 +8,44 @@ import { checkToken } from "@/services/tokenConfig";
 import { useRouter } from "next/router";
 
 export default function createGame() {
+    // Armazena os gêneros de filmess do banco de dados
+    const [genres, setGenres]: any = useState(undefined);
+
+    //Armazena os genros selecionados
+    var selectedGenres: Array<string> = [];
 
     const router = useRouter();
+
+    function handleCheckBoxEdit(event: any, name: string) {
+        if (event.target.checked) {
+            selectedGenres.push(name);
+        } else {
+            const index = selectedGenres.indexOf(name);
+
+            if (index != undefined) {
+                selectedGenres.splice(index, 1)
+            }
+        }
+    }
+
+    async function fetchData() {
+        try {
+            const responses = await fetch(`/api/action/genre/select`, {
+                method: 'GET'
+            });
+
+            const responseJson = await responses.json();
+
+            setGenres(responseJson.data);
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     function logout() {
         deleteCookie('authorization');
@@ -27,7 +63,7 @@ export default function createGame() {
         distributor: '',
         price: '',
         imageURL: '',
-        videoURL: ''
+        videoURL: '',
     });
 
     function handleFormEdit(event: any, field: string) {
@@ -35,13 +71,13 @@ export default function createGame() {
             ...formData,
             [field]: event.target.value
         });
-
-
-        console.log(formData);
     }
 
     async function formSubmit(event: any) {
         event.preventDefault();
+
+        console.log(selectedGenres);
+        
 
         try {
             const response = await fetch(`/api/action/game/create`,
@@ -51,6 +87,7 @@ export default function createGame() {
                     body: JSON.stringify({
                         name: formData.name,
                         releaseDate: formData.releaseDate,
+                        genres: selectedGenres,
                         systemRequirements: formData.systemRequirements,
                         description: formData.description,
                         accessLink: formData.accessLink,
@@ -107,7 +144,7 @@ export default function createGame() {
 
                         <p className={styles.inputLabel} >Requerimentos do Sistema</p>
                         <div className={styles.inputTextDiv}>
-                            <textarea className={styles.inputText} placeholder="Descrição" onChange={(event) => { handleFormEdit(event, 'systemRequirements') }} /><br />
+                            <textarea className={styles.inputText} placeholder="Requerimentos do Sistema" onChange={(event) => { handleFormEdit(event, 'systemRequirements') }} /><br />
                         </div>
 
                         <p className={styles.inputLabel}>Link de Acesso do Jogo</p>
@@ -135,6 +172,26 @@ export default function createGame() {
                         <div className={styles.inputTextDiv}>
                             <textarea className={styles.inputText} placeholder="Descrição" onChange={(event) => { handleFormEdit(event, 'description') }} /><br />
                         </div>
+
+
+                        <h3 className={styles.genresHeading}>Gêneros do Filme</h3>
+                        <div className={styles.genresDiv}>
+                            {
+                                genres != undefined && genres instanceof Array ?
+
+                                    genres.map(genre => (
+                                        <div className={styles.genreBox}>
+                                            <input type="checkbox" onChange={(e) => handleCheckBoxEdit(e, genre.name)} />
+                                            <label>{genre.name}</label>
+                                        </div>
+                                    ))
+                                    :
+
+                                    <p> No genres</p>
+                            }
+                        </div>
+
+
                         <input className={styles.submitBtn} type="submit" value="Enviar" /><br /><br />
                     </form>
                 </div>

@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap'); /* "Monoton" */
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap'); /* "Audiowide" */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); /* "Fira Sans" */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gloria+Hallelujah&display=swap');
+/* "Audiowide",
+ "Fira Sans",
+ "Gloria Hallelujah" */
 
 #main {
     overflow: hidden;
@@ -105,15 +106,15 @@
 .mainContainer {
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(100, 100, 150);
+    background-color: rgb(10, 20, 40);
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 20% 75%;
 }
 
 .leftContainer {
     width: auto;
     height: auto;
-    background-color: rgb(70, 80, 140);
+    background-color: rgb(60, 60, 70);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     margin-right: 1vw;
@@ -123,31 +124,32 @@
 .rightContainer {
     width: auto;
     height: auto;
-    background-color: rgb(30, 30, 100);
+    background-color: rgb(0, 30, 50);
+    border: 3px solid rgb(60, 60, 70);
     border-top-right-radius: 10px;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 
-    margin: 3vh 1vw 0 1vw;
+    margin: 5vh 1vw 3vh 1vw;
     border-radius: 15px;
     padding: 30px;
 }
 
 .card {
     font-family: "Fira Sans", sans-serif;
-    width: 30vw;
-    height: 40vh;
+    width: 32vw;
+    height: 45vh;
     text-align: center;
-    background-color: rgb(10, 20, 40);
-    color: whitesmoke;
+    background-color: rgb(10, 20, 0);
     padding: 15px;
     margin: 8px 3px 25px;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 40% 60%;
-    box-shadow: 0px 0px 8px 3px white;
-
+    box-shadow: 0px 0px 15px 1px white;
+    transition: 200ms;
+    
     cursor: pointer;
 }
 
@@ -155,9 +157,15 @@
     margin: auto 0;
 }
 
+.card:hover {
+    background-color: rgb(15, 28, 10);
+    box-shadow: 0px 0px 18px 3px white;
+    transition: 200ms;
+}
+
 .cardInfos {
     display: flex;
-    justify-content: center;
+    justify-content: baseline;
     align-items: flex-start;
     flex-direction: column;
     text-align: left;
@@ -168,10 +176,42 @@
 }
 
 .cardInfos p {
-    margin-top: 6px;
-    margin-bottom: 4px;
+    max-width: 14vw;
+    text-wrap: pretty;
+
+    margin-top: 15px;
+    margin-bottom: 5px;
+
+    color: rgb(230, 239, 255);
+
+    border-bottom: 2px solid;
+
+    padding-left: 0.1em;
+    padding-right: 0.2em;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 9px;
+
 }
 
 .movieTitle {
-    font-size: 1.5em;
+    font-size: 1.6em;
+    font-family: "Gloria Hallelujah";
+    color: rgb(225, 238, 255);
+    border-bottom: 2px double rgb(225, 238, 255);
+    border-left: 1px double rgb(225, 238, 255);
+    padding-left: 0.5em;
+    padding-right: 0.6em;
+    border-bottom-left-radius: 55px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 35px;
+    transition: 200ms;
+}
+
+.movieTitle:hover {
+    transition: 200ms;
+    color: rgb(200, 200, 225);
+}
+
+.movieDataLink {
+    word-break: break-all;
 }

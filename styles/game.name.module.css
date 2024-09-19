@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gloria+Hallelujah&display=swap');
+/* "Audiowide",
+ "Fira Sans",
+ "Gloria Hallelujah" */
+
+#main {
+    background-color: rgb(25, 35, 45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(240, 240, 255);
+    overflow: hidden;
+    padding-bottom: 5vh;
+}
+
+.topNav {
+    display: flex;
+    position: static;
+    width: 100vw;
+    height: 8vh;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3vw;
+    background-color: rgb(0, 10, 15);
+    top: 0;
+}
+
+.logoImg {
+    width: 100px;
+    transition: 100ms;
+}
+
+.logoutBtn {
+    background-color: rgb(100, 0, 75);
+    padding: 4px 7px;
+    border-radius: 7px;
+    font-family: "Audiowide", sans-serif;
+    color: rgb(230, 240, 255);
+}
+
+.logoutBtn:hover {
+    transition: 200ms;
+    background-color: rgb(100, 60, 75);
+}
+
+.logoutBtn:active {
+    transition: 200ms;
+    background-color: rgb(170, 0, 30);
+}
+
+.logoImg:hover {
+    transition: 100ms;
+    width: 110px;
+    height: auto;
+}
+
+.title {
+    font-size: 2em;
+    transition: 100ms;
+}
+
+.title:hover {
+    transition: 100ms;
+    font-size: 2.1em;
+}
+
+.brand {
+    color: rgb(124, 240, 230);
+    padding-left: 0.5em;
+    font-family: "Audiowide";
+    border-bottom: 1px solid rgb(100, 200, 230);
+    border-left: 1px solid rgb(100, 200, 230);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Fim da nav bar */
+
+.game {
+    background-color: rgb(12, 22, 15);
+    width: 80vw;
+    height: 70vh;
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid rgb(48, 57, 100);
+    border-radius: 16px;
+    overflow: hidden;
+    font-size: 1.1em;
+    font-family: "Fira Sans", sans-serif;
+}
+
+.gameBanner {
+    max-width: 30vw;
+    height: 70vh;
+    padding: 1vh 0.7vw;
+    border-radius: 10px;
+}
+
+.gameInfos {
+    width: 45vw;
+    padding: 2vh 2vw;
+    height: 63vh;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+
+.gameName {
+    width: fit-content;
+    padding: 0 2vw 0 0.5vw;
+    font-size: 1.3em;
+    border-bottom: 1px solid rgb(200, 200, 255);
+    border-left: 1px solid rgb(240, 240, 255);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 15px;
+    margin-left: 3em;
+    margin-bottom: 2vh;
+}
+
+.gameItem {
+    width: fit-content;
+    padding-left: 0.5em;
+    padding-right: 1.5em;
+    border-bottom: 1px double rgb(200, 200, 255);
+    padding-top: 3vh;
+    border-bottom-right-radius: 5px;
+}
+
+.gameGenresList {
+    display: inline-block;
+    width: 100%;
+}
+
+.gameGenreItem {
+    font-family: "Fira Sans", sans-serif;
+    list-style-type: disc;
+    margin-left: 2em;
+    padding: 0.6em 0 0.2em 0;
+}
+
+.gameGenreItem::after {
+    content: '.';
+}
+
+.gameURL {
+    width: fit-content;
+    padding-left: 0.5em;
+    padding-right: 1.5em;
+    border-bottom: 1px double rgb(200, 200, 255);
+    padding-top: 3vh;
+    border-bottom-right-radius: 5px;
+    text-wrap: wrap;
+    word-break: break-all;
+}
+
+.gameUrlLink {
+    color: 1px double rgb(180, 200, 205);
+    border-bottom: 1px outset rgb(130, 118, 205) !important;
+    transition: 200ms;
+}
+
+.gameUrlLink:hover {
+    color: rgb(190, 200, 195);
+    border-bottom: 1px outset rgb(130, 118, 205) !important;
+    transition: 200ms;
+}
+
+.gameUrlLink:active {
+    color: rgb(200, 200, 255);
+    border-bottom: 1px outset rgb(130, 118, 205) !important;
+    transition: 200ms;
+}
+
+.gameVideo {
+    margin: 0 auto;
+    margin-bottom: 5vh;
+}
+
+.formRating {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70vw;
+    min-height: fit-content;
+    max-height: 40vh;
+    margin: 0 auto;
+    background-color: black;
+    padding-top: 1vh;
+    padding-bottom: 3vh;
+    border-radius: 8px;
+}
+
+.createRatingsHeading {
+    font-family: "Gloria Hallelujah";
+    font-size: 1.5em;
+    font-style: italic;
+    color: azure;
+    margin-bottom: 2vh;
+    border-bottom: 1px solid azure;
+
+    padding-left: 1em;
+    border-bottom-left-radius: 15px;
+}
+
+.topDivformRating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+.topDivformRatingNote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteComment {
+    background-color: rgb(100, 20, 40);
+    padding: 0.2em 0.6em;
+    height: fit-content;
+    margin: auto 0;
+    border-radius: 4px;
+    font-family: "Audiowide";
+    cursor: pointer;
+    transition: 100ms;
+    color: white;
+}
+
+.deleteComment:hover {
+    transition: 100ms;
+    background-color: rgb(70, 20, 40);
+    color: rgb(230, 240, 240);
+}
+
+.deleteComment:active {
+    transition: 300ms;
+    background-color: rgb(120, 140, 200);
+    color: rgb(18, 18, 62);
+}
+
+.label {
+    font-family: "Fira Sans", sans-serif;
+    font-size: 1em;
+    margin: 3vh 0 2vh;
+}
+
+.value {
+    width: 4em;
+    color: black;
+    border-radius: 4px;
+    padding-left: 1em;
+    margin-bottom: 3vh;
+}
+
+/* Radio Star */
+
+.starRating {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.radioHide {
+    /* display: none; */
+    opacity: 0;
+    position: fixed;
+}
+
+.radioStar {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.452);
+    transition: 200ms;
+}
+
+.radioStar::before {
+    content: "\2605";
+    display: inline-block;
+    font-size: 2em;
+}
+
+.radioStar:hover,
+.radioStar:hover~.radioStar {
+    color: goldenrod;
+    transition: 200ms;
+}
+
+.radioHide:checked~.radioStar {
+    color: gold;
+}
+
+
+.comment {
+    width: 60vw;
+    border-radius: 7px;
+    padding: 15px;
+    color: black;
+    margin-bottom: 2vh;
+}
+
+.submitBtn {
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    background-color: rgb(90, 0, 216);
+    cursor: pointer;
+    font-family: "Audiowide";
+    padding: 0.1em 0.5em;
+    border-radius: 4px;
+    transition: 100ms;
+}
+
+.submitBtn:hover {
+    background-color: rgb(136, 58, 245);
+    padding: 0.1em 0.7em;
+    border-radius: 4px;
+    transition: 200ms;
+}
+
+.submitBtn:active {
+    background-color: rgb(80, 70, 140);
+    padding: 0.1em 0.5em;
+    border-radius: 4px;
+    transition: 200ms;
+}
+
+.ratings {
+    background-color: rgb(12, 12, 35);
+    min-width: 40vw;
+    width: fit-content;
+    max-width: 80vw;
+    margin: 4vh auto 0;
+    padding: 5vh 1vw 2vh 2vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px groove rgb(40, 0, 100);
+    border-radius: 8px;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.ratingTitle {
+    font-family: "Audiowide";
+    font-size: 1.3em;
+    padding: 0.2em 2em;
+    border: 3px solid rgb(40, 0, 130);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 3px;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: rgb(49, 25, 44);
+    box-shadow: 0px 0px 6px 2px rgb(210, 220, 255) inset;
+
+}
+
+.ratingCard {
+    width: 60vw;
+    height: fit-content;
+    background-color: rgb(19, 25, 44);
+    border: 1px groove rgb(90, 40, 180);
+    padding: 1vh 1vw 1vh 2vw;
+    color: rgb(230, 250, 255);
+    font-family: "Fira Sans", sans-serif;
+    margin: 2vh 0;
+    font-size: 1em;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ratingTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 4vw;
+    margin-top: 0.9em;
+}
+
+.ratingRecommendations {
+    border-bottom: 1px solid rgb(234, 234, 255);
+    width: fit-content;
+    padding-left: 1em;
+    padding-right: 2em;
+    font-size: 1.2em;
+    margin-bottom: 2vh;
+}
+
+.ratingUser {
+    width: fit-content;
+    margin-right: 3vw;
+    font-style: italic;
+}
+
+.ratingComment {
+    display: block;
+    width: 50vw;
+    min-height: fit-content;
+    max-height: 25vh;
+    overflow-y: auto;
+    background-color: rgb(238, 238, 238);
+    color: black;
+    border-radius: 5px;
+    padding: 2vh 2vw;
+    box-shadow: 0px 0px 5px 3px rgb(210, 220, 255);
+}

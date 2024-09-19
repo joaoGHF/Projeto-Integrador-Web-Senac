@@ -6,9 +6,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(405).json({ message: 'Method not allowed' });
     }
 
-    const { name, releaseDate, systemRequirements, description, accessLink, platform, developer, distributor, price, imageURL, videoURL } = req.body;
+    const { name, releaseDate, genres, systemRequirements, description, accessLink, platform, developer, distributor, price, imageURL, videoURL } = req.body;
+
+    console.log(req.body);
     
-    const response = await createGameController(name, releaseDate, systemRequirements, description, accessLink, platform, developer, distributor, price, imageURL, videoURL );
+    const response = await createGameController(name, releaseDate, genres, systemRequirements, description, accessLink, platform, developer, distributor, price, imageURL, videoURL );
 
     return res.status(response.status).json({message: response.message});
 }

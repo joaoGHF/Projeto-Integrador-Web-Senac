@@ -93,6 +93,7 @@
     width: 55vw;
     border-radius: 7px;
     border: 2px groove rgb(0, 30, 70);
+    border-right: none;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -142,13 +143,19 @@
 }
 
 .inputTextDiv {
-    height: 4em;
+    min-height: 15vh;
+    height: fit-content;
     width: fit-content;
     margin-bottom: 1vh;
+    display: inline-block;
+    width: 80%;
 }
 
 .inputText {
-    width: 24vw;
+    width: 100%;
+    min-height: 8vh;
+    height: 15vh;
+    display: inline-block;
     padding-top: 7px;
     padding-bottom: 7px;
     padding-left: 1em;
@@ -157,6 +164,39 @@
     font-size: 1.1em;
     height: 100%;
     resize: none;
+}
+
+.genresHeading {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.4em;
+    border-bottom: 1px solid rgb(245, 245, 245);
+    padding: 0 0.3em 0 0.2em;
+    margin: 2vh 0 1vh 0;
+
+}
+
+.genresDiv {
+    width: 22vw;
+    min-width: 400px;
+    min-height: 20vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    overflow-y: auto;
+}
+
+.genreBox {
+    border: 1px solid rgb(220, 220, 245);
+    word-break: keep-all;
+    background-color: rgb(33, 33, 61);
+    padding-left: 1.4em;
+    padding-top: 0.1em;
+    font-size: 1.2em;
+    font-family: "Gloria Hallelujah";
+    font-style: italic;
+}
+
+.genreBox label {
+    padding-left: 1em;
 }
 
 .submitBtn {
