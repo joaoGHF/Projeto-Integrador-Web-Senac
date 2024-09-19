@@ -1,6 +1,7 @@
 import { createGame, findGameByName, selectGames } from "../model/game";
+import { findGenreByName } from "../model/genre";
 
-export async function createGameController(_name:string, _releaseDate:string, _systemRequirements:string, _description:string, _accessLink:string, _platform:string, _developer:string, _distributor:string, _price:number = 0, _imageURL:string, _videoURL:string) {
+export async function createGameController(_name: string, _releaseDate: string, _genres: Array<any>, _systemRequirements: string, _description: string, _accessLink: string, _platform: string, _developer: string, _distributor: string, _price: number = 0, _imageURL: string, _videoURL: string) {
     try {
         // Verificações do controller
         if (_name.length == 0) {
@@ -49,8 +50,20 @@ export async function createGameController(_name:string, _releaseDate:string, _s
             return { status: 400, message: 'Name already registered' };
         }
 
+        // Verificar os Gêneros
+        var verifiedGenres = [];
+
+        for (let i = 0; i < _genres.length; i++) {
+            let genreByName = await findGenreByName(_genres[i]);
+
+            if (genreByName == undefined) {
+                return { status: 404, message: 'Genre not found' };
+            }
+            verifiedGenres.push(genreByName.id);
+        }
+
         // Criar a Model
-        const game = await createGame(_name, _releaseDate, _systemRequirements, _description, _accessLink, _platform, _developer, _distributor, _price, _imageURL, _videoURL);
+        const game = await createGame(_name, _releaseDate, verifiedGenres, _systemRequirements, _description, _accessLink, _platform, _developer, _distributor, _price, _imageURL, _videoURL);
         return { status: 201, message: 'Game Created', data: game }
 
     } catch (err) {

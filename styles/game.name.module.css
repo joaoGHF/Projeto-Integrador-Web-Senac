@@ -134,6 +134,22 @@
     border-bottom-right-radius: 5px;
 }
 
+.gameGenresList {
+    display: inline-block;
+    width: 100%;
+}
+
+.gameGenreItem {
+    font-family: "Fira Sans", sans-serif;
+    list-style-type: disc;
+    margin-left: 2em;
+    padding: 0.6em 0 0.2em 0;
+}
+
+.gameGenreItem::after {
+    content: '.';
+}
+
 .gameURL {
     width: fit-content;
     padding-left: 0.5em;

@@ -60,7 +60,17 @@ export default function game({ gameName }: any) {
             });
 
             const responseJson = await response.json();
-            setData(responseJson.data)
+
+            console.log(responseJson.data);
+            if (!String(responseJson.data.videoURL).includes("https://")) {
+                responseJson.data.videoURL = "https://www.youtube.com/embed/ZWcRmoLqhkc?si=_x97gPDtDmoD728q";
+            }
+
+            if (!String(responseJson.data.imageURL).includes("https://")) {
+                responseJson.data.imageURL = "https://static.vecteezy.com/ti/vetor-gratis/p1/3416081-erro-404-com-o-fantasma-mascote-fofo-gratis-vetor.jpg";
+            }
+
+            setData(responseJson.data);
 
         } catch (err) {
             console.log(err);
@@ -135,12 +145,26 @@ export default function game({ gameName }: any) {
                         </Head>
                         <div className={styles.game}>
 
-                            <img src={data.imageURL} alt="Banner Filme" className={styles.gameBanner} />
+                            <img src={data.imageURL} alt="Banner Jogo" className={styles.gameBanner} />
 
                             <div className={styles.gameInfos}>
                                 <h2 className={styles.gameName}>{data.name}</h2>
                                 <p className={styles.gameItem}>Data de Lançamento: {dateFormat(data.releaseDate)}</p>
                                 <p className={styles.gameItem}>Requerimentos do Sistema: {data.systemRequirements} </p>
+                                <p className={styles.gameItem}>Gêneros: </p>
+
+                                <ul className={styles.gameGenresList}>
+                                    {
+                                        data.genres != undefined ?
+                                            data.genres.map((genre: any) => (
+                                                <li className={styles.gameGenreItem}>{genre.name}</li>
+                                            ))
+                                            :
+                                            <span>Sem Gêneros</span>
+                                    }
+
+                                </ul>
+
                                 <p className={styles.gameURL}>Disponível em: <Link href={data.accessLink} target="_blank" className={styles.gameUrlLink}>{data.accessLink}</Link></p>
                                 <p className={styles.gameItem}>Preço: R${data.price}</p>
                                 <p className={styles.gameItem}>Descrição: {data.description}</p>
@@ -149,6 +173,7 @@ export default function game({ gameName }: any) {
                                 <p className={styles.gameItem}>Distribuidora(s): {data.distributor}</p>
                             </div>
                         </div>
+
                         <iframe width="1280" height="720" src={data.videoURL} className={styles.gameVideo}></iframe>
 
                         <form className={styles.formRating} onSubmit={formSubmit}>

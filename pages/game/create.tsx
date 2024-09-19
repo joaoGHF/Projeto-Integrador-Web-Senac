@@ -12,15 +12,15 @@ export default function createGame() {
     const [genres, setGenres]: any = useState(undefined);
 
     //Armazena os genros selecionados
-    var selectedGenres: Array<Number> = [];
+    var selectedGenres: Array<string> = [];
 
     const router = useRouter();
 
-    function handleCheckBoxEdit(event: any, id: number) {
+    function handleCheckBoxEdit(event: any, name: string) {
         if (event.target.checked) {
-            selectedGenres.push(Number(id));
+            selectedGenres.push(name);
         } else {
-            const index = selectedGenres.indexOf(Number(id));
+            const index = selectedGenres.indexOf(name);
 
             if (index != undefined) {
                 selectedGenres.splice(index, 1)
@@ -63,7 +63,7 @@ export default function createGame() {
         distributor: '',
         price: '',
         imageURL: '',
-        videoURL: ''
+        videoURL: '',
     });
 
     function handleFormEdit(event: any, field: string) {
@@ -76,6 +76,9 @@ export default function createGame() {
     async function formSubmit(event: any) {
         event.preventDefault();
 
+        console.log(selectedGenres);
+        
+
         try {
             const response = await fetch(`/api/action/game/create`,
                 {
@@ -84,6 +87,7 @@ export default function createGame() {
                     body: JSON.stringify({
                         name: formData.name,
                         releaseDate: formData.releaseDate,
+                        genres: selectedGenres,
                         systemRequirements: formData.systemRequirements,
                         description: formData.description,
                         accessLink: formData.accessLink,
@@ -177,7 +181,7 @@ export default function createGame() {
 
                                     genres.map(genre => (
                                         <div className={styles.genreBox}>
-                                            <input type="checkbox" onChange={(e) => handleCheckBoxEdit(e, genre.id)} />
+                                            <input type="checkbox" onChange={(e) => handleCheckBoxEdit(e, genre.name)} />
                                             <label>{genre.name}</label>
                                         </div>
                                     ))

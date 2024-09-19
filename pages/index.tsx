@@ -27,7 +27,7 @@ export default function Home() {
     }
   }
 
-  function formSubmit(event:any) {
+  function formSubmit(event: any) {
     event.preventDefault();
 
     try {
@@ -79,7 +79,7 @@ export default function Home() {
     const [year, month, day] = date.split("-");
 
     return `${day}/${month}/${year}`;
-}
+  }
 
   return (
     <main id={styles.main} className={`flex min-h-screen flex-col`} >
@@ -89,10 +89,10 @@ export default function Home() {
 
       {/* Barra superior de navegação */}
       <nav className={styles.topNav}>
-        <Link href={`/`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} onClick={iconClick}/></Link>
+        <Link href={`/`}><Image src="/logo.png" alt="Logo" width="100" height="100" className={styles.logoImg} onClick={iconClick} /></Link>
 
         <form className={styles.searchContainer} onSubmit={formSubmit}>
-          <input type="text" className={styles.searchBar} onChange={(e) => { setName(e.target.value) }}/>
+          <input type="text" className={styles.searchBar} onChange={(e) => { setName(e.target.value) }} />
           <button className={styles.send}>Enviar</button>
         </form>
 
