@@ -100,16 +100,11 @@ export default function Home() {
         <button className={styles.logoutBtn} onClick={logout}>Logout</button>
       </nav>
 
-      {/* Container principal, ele vai conter o GRID */}
+      {/* Container principal */}
       <div className={styles.mainContainer}>
 
-        {/* Painel esquerdo */}
-        <div className={styles.leftContainer}>
-
-        </div>
-
         {/* Painel direito */}
-        <div className={styles.rightContainer}>
+        <div className={styles.cardsContainer}>
 
           {data != undefined && data instanceof Array ?
             data.map(game => (

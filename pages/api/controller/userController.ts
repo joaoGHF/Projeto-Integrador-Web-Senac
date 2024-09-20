@@ -5,35 +5,6 @@ export async function createUserController(_name: string, _username: string, _em
     console.log("teste 1");
 
     try {
-        // Verificações do Controller
-        if (_password != _confirmPassword) {
-            return { status: 400, message: 'passwords dont match' };
-        }
-
-        if (_name.length == 0) {
-            return { status: 403, message: 'Name is empty' };
-        }
-
-        if (_username.length == 0) {
-            return { status: 403, message: 'Username is empty' };
-        }
-
-        if (_email.length == 0) {
-            return { status: 403, message: 'Email is empty' };
-        }
-
-        if (_cpf.length == 0) {
-            return { status: 403, message: 'CPF is empty' };
-        }
-
-        if (_password.length == 0) {
-            return { status: 403, message: 'Password is empty' };
-        }
-
-        if (_confirmPassword.length == 0) {
-            return { status: 403, message: 'Confirm Password is empty' };
-        }
-
         // Verificar atributos únicos
         const userByEmail = await findUserByEmail(_email);
         if (userByEmail != undefined) {

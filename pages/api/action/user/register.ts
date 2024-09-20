@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { createUserController } from "../../controller/userController";
-
-// TODO: Bug, falha ao testar com o insomnia
+import { createUserRequest } from "@/request/createUserRequest";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method != "POST") {
@@ -9,9 +8,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const {name, username, email, cpf, password, confirmPassword} = req.body;
+
+    // Aplicar request
+    const checkRequest = createUserRequest(name, username, email, cpf, password, confirmPassword);
+    if ( checkRequest.response == false ) {
+        return res.status(400).json( { message: checkRequest.message } );
+    }
+
     
     // Enviar para o controller 
     const response = await createUserController(name, username, email, cpf, password, confirmPassword);
 
-    return res.status(response.status).json(response.message);
+    return res.status(response.status).json({message: response.message});
 }

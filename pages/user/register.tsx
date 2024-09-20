@@ -37,10 +37,12 @@ export default function Register() {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(formData)
-      });
+      });      
 
       const responseJson = await response.json();
-      alert(`Response: ${responseJson}`);
+      alert(`Response: ${responseJson.message}`);
+      console.log(responseJson);
+      
 
       if (response.status == 201) {
         router.push(`/user/login/`);

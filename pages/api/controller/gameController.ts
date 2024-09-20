@@ -3,47 +3,7 @@ import { findGenreByName } from "../model/genre";
 
 export async function createGameController(_name: string, _releaseDate: string, _genres: Array<any>, _systemRequirements: string, _description: string, _accessLink: string, _platform: string, _developer: string, _distributor: string, _price: number = 0, _imageURL: string, _videoURL: string) {
     try {
-        // Verificações do controller
-        if (_name.length == 0) {
-            return { status: 400, message: 'Name is empty' };
-        }
-
-        if (_releaseDate.length == 0) {
-            return { status: 400, message: 'Release Date is empty' };
-        }
-
-        if (_systemRequirements.length == 0) {
-            return { status: 400, message: 'System Requirements is empty' };
-        }
-
-        if (_description.length == 0) {
-            return { status: 400, message: 'Description is empty' };
-        }
-
-        if (_accessLink.length == 0) {
-            return { status: 400, message: 'Access Link is empty' };
-        }
-
-        if (_platform.length == 0) {
-            return { status: 400, message: 'Platform is empty' };
-        }
-
-        if (_price < 0) {
-            return { status: 400, message: 'Price is invalid' };
-        }
-
-        if (_distributor.length == 0) {
-            return { status: 400, message: 'Distributor is empty' };
-        }
-
-        if (_imageURL.length == 0) {
-            return { status: 400, message: 'Image URL is empty' };
-        }
-
-        if (_videoURL.length == 0) {
-            return { status: 400, message: 'Video URL is empty' };
-        }
-
+        
         // Verificar atributos únicos
         const gameByName = await findGameByName(_name);
         if (gameByName != undefined) {
