@@ -106,7 +106,7 @@ export default function createGame() {
 
             alert(`${responseJson.message}`);
 
-            router.reload();
+            // router.reload();
 
         }
         catch (err: any) {

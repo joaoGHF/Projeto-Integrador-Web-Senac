@@ -20,7 +20,7 @@ export function createGameRequest(_name: any, _releaseDate: any, _systemRequirem
     }
 
     if (!checkMinMaxLength(_accessLink, 10, 70)) {
-        return { response: false, message: 'Link inválido, deve conter entre 10 e 70 caracteres.' };
+        return { response: false, message: 'Link do jogo inválido, deve conter entre 10 e 70 caracteres.' };
     }
 
     if (!checkMinMaxLength(_platform, 2, 40)) {
